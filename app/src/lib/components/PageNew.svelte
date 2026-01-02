@@ -277,9 +277,7 @@
 
             console.log(formVal);
         }
-
-        console.log("통과?");
-
+        
         try {
             const res = await axios.post(
                 `${back_api}/update_customer`,
