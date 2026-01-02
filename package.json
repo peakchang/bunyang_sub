@@ -4,7 +4,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "cross-env NODE_ENV=production PORT=4010 pm2 start server.js -i 0 --name bunyang_sub",
+    "start": "cross-env NODE_ENV=production PORT=4040 pm2 start server.js -i 0 --name bunyang_sub",
     "dev": "nodemon server"
   },
   "author": "",
