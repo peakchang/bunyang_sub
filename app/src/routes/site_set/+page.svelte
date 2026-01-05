@@ -103,8 +103,6 @@
             siteData.ld_Interaction = "fix";
         }
 
-        console.log(siteData.ld_Interaction);
-
         if (siteData.ld_font) {
             selectedFont = fonts.find((v) => v.class == siteData.ld_font);
         }
@@ -258,8 +256,6 @@
 
         // 섹션 삭제시 섹션 내 이미지가 있으면 전부 삭제 GOGO!!! deleteImgArr 에 backgroundImg / contentList 돌면서 imgPath 있으면 넣기
 
-        console.log(mainContents[sectionIdx]);
-
         const deleteImgArr = [];
 
         const section = mainContents[sectionIdx];
@@ -274,10 +270,6 @@
         });
 
         if (deleteImgArr.length > 0) {
-            console.log(deleteImgArr);
-
-            console.log("이제 삭제 고고!!!");
-            console.log(`${back_api_sub}/image/delete_gcs_img_many`);
 
             try {
                 const res = await axios.post(
@@ -354,8 +346,6 @@
 
             alert("복사 완료! 관리자 페이지에서 확인 해주세요!");
         } catch (err) {
-            console.log("에러 들어와야징");
-
             const m = err.response.data.message;
             alert(m ? m : "사이트 카피 실패 다시 시도해주세요.");
         }
@@ -363,9 +353,6 @@
     }
 
     function sortSection() {
-        console.log(this.value);
-        console.log(this.dataset.direct);
-        console.log(mainContents);
 
         const index = Number(this.value);
 
@@ -390,9 +377,6 @@
     function sortMenu() {
         const index = Number(this.value);
         const direct = this.dataset.direct;
-        console.log(index);
-        console.log(direct);
-        console.log(menuObj["menus"]);
 
         if (index == 0 && direct == "up") {
             toast.set({
@@ -972,6 +956,7 @@
                                                 <button
                                                     class="btn btn-soft btn-success btn-xs"
                                                     on:click={(e) => {
+
                                                         e.target.parentNode.parentNode.parentNode.firstChild.classList.remove(
                                                             "hidden",
                                                         );
@@ -1077,8 +1062,6 @@
                     } else {
                         siteData.ld_popup_img = e.imgPath;
                     }
-
-                    console.log(siteData.ld_popup_img);
                 }}
                 domainFolder={getDomain}
             />

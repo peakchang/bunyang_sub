@@ -97,8 +97,6 @@
     };
 
     async function deleteImageAct() {
-        console.log(imgPath);
-
         try {
             const res = await axios.post(
                 `${back_api_sub}/image/delete_gcs_img`,

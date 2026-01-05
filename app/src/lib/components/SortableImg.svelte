@@ -26,17 +26,17 @@
     let imgIdx = $state(0);
 
     let fileInput;
-
+        
     if (loadImgArr) {
         if (Array.isArray(loadImgArr)) {
             imgArr = loadImgArr.map((con, i) => ({
                 id: i + 1,
-                url: con,
+                url: con.url,
             }));
         } else {
             imgArr = loadImgArr.split(",").map((con, i) => ({
                 id: i + 1,
-                url: con,
+                url: con.url,
             }));
         }
     }

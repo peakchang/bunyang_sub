@@ -65,6 +65,9 @@
 
     // 컨텐츠 수정 함수
     function modifyContentFunc() {
+
+        console.log('컨텐츠 수정 들어오니?!');
+        
         /*
         업로드 되어 있는 컨텐츠 수정 함수!
         기본 정리!
