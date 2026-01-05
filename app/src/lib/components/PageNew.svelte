@@ -58,6 +58,9 @@
     // 구, 신버전 공통 폼 입력 관련 변수
 
     onMount(async () => {
+
+        console.log(siteData);
+        
         if (siteData.ld_json_main) {
             mainContents = JSON.parse(siteData.ld_json_main);
 
