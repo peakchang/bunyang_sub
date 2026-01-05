@@ -4,7 +4,7 @@ export const back_api_origin = `${import.meta.env.VITE_SERVER_URL}`
 
 export const aosStyleList = ["fade-up", "fade-down", "flip-left", "flip-right", "flip-up", "flip-down", "zoom-in", "zoom-in-up", "zoom-in-down"]
 
-export const gcs_img = "https://storage.googleapis.com/withby-site"
+export const gcs_img = `https://storage.googleapis.com/${import.meta.env.VITE_BUCKET}`
 // export const gcs_img = "hhttps://storage.cloud.google.com/withby-site"
 
 export const consentInfo = `
