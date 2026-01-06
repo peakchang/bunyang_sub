@@ -55,8 +55,6 @@
 
     let modalOpen = $state(false); // 개인 정보 모달
 
-    let testChk = $state(siteData.ld_domain == "cantavil");
-
     // 구, 신버전 공통 폼 입력 관련 변수
 
     onMount(async () => {
@@ -358,9 +356,6 @@
 <!-- <a href="/tel" data-sveltekit-reload> gogogo </a> -->
 
 <div class="mb-5 {siteData.ld_font ? siteData.ld_font : 'pretendard'}">
-    {#if testChk}
-        일단 여기부터 체크 해보기~~~~~~~~~~~~~~~!!!!!!!!!!!!!!!!!
-    {/if}
     {#each mainContents as mainContent, idx}
         <div
             class="bg-box"
