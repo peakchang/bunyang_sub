@@ -6,6 +6,8 @@
     let { data } = $props();
 
     let siteData = $derived(data.subView);
+    console.log(siteData);
+    
 
 </script>
 
