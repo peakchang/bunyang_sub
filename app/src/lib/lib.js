@@ -269,7 +269,6 @@ export function convertPrivacyTextToHtml(rawText) {
 // 백그라운드 스타일은 그냥 여기서 빼버리자 ㅋㅋ
 export function setImg(imgUrl) {
 
-    console.log(gcs_img);
     
 
     // 백그라운드 이미지가 없으면 바로 리턴
@@ -286,6 +285,9 @@ export function setImg(imgUrl) {
     } else {
         setImgUrl = `${gcs_img}/${imgUrl}`;
     }
+
+    console.log(setImgUrl);
+    
 
     return setImgUrl;
 }
