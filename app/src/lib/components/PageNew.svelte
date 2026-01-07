@@ -58,6 +58,9 @@
     // 구, 신버전 공통 폼 입력 관련 변수
 
     onMount(async () => {
+
+        console.log(siteData.ld_personal_info_view);
+        
         if (
             !siteData.ld_personal_info_view ||
             siteData.ld_personal_info_view == "off"
