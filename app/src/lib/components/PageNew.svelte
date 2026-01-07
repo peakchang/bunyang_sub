@@ -73,6 +73,9 @@
         if (siteData.ld_json_main) {
             mainContents = JSON.parse(siteData.ld_json_main);
 
+            console.log(mainContents);
+            
+
             /*
 
             백그라운드 이미지가 전부 페이지에 로드 된 다음에 ratio 실행을 위해서 (그래야 정상적으로 돌아감)
