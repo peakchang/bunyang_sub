@@ -62,7 +62,9 @@
             !siteData.ld_personal_info_view ||
             siteData.ld_personal_info_view == "off"
         ) {
-            $inviteChk == true;
+            console.log('꺼짐! 들어와? layout');
+            
+            $inviteChk = true;
         }
 
         const getVisitedCookie = Cookies.get("topby_visited");

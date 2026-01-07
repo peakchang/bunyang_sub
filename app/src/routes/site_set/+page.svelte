@@ -465,7 +465,7 @@
                 <div class="w-full">
                     <input
                         type="text"
-                        class="input-base text-xs w-full"
+                        class="input-base text-xs w-full border-gray-200"
                         placeholder="도메인주소를 입력하세요 (영어 소문자/숫자만)"
                         bind:value={copyDomain}
                     />

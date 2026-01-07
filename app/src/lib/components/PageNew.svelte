@@ -59,13 +59,15 @@
 
     onMount(async () => {
 
-        console.log(siteData.ld_personal_info_view);
+        console.log(siteData.ld_invite_bool);
         
         if (
-            !siteData.ld_personal_info_view ||
-            siteData.ld_personal_info_view == "off"
+            !siteData.ld_invite_bool ||
+            siteData.ld_invite_bool == "off"
         ) {
-            $inviteChk == true;
+
+            console.log('꺼짐! 들어와? layout');
+            $inviteChk = true;
         }
 
         if (siteData.ld_json_main) {
