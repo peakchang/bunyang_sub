@@ -58,15 +58,10 @@
     // 구, 신버전 공통 폼 입력 관련 변수
 
     onMount(async () => {
-
         console.log(siteData.ld_invite_bool);
-        
-        if (
-            !siteData.ld_invite_bool ||
-            siteData.ld_invite_bool == "off"
-        ) {
 
-            console.log('꺼짐! 들어와? layout');
+        if (!siteData.ld_invite_bool || siteData.ld_invite_bool == "off") {
+            console.log("꺼짐! 들어와? pageNew!!!");
             $inviteChk = true;
         }
 
@@ -74,7 +69,6 @@
             mainContents = JSON.parse(siteData.ld_json_main);
 
             console.log(mainContents);
-            
 
             /*
 
@@ -319,7 +313,6 @@
     // 폼 만들어주기!! (폼을 만들어서 업데이트 시에 적용)
     function focusAct(e) {
         if (!isSameArrayKeys($getFormList, e.formList)) {
-
             $formAgree = e.formAgree;
 
             $getFormList = e.formList;
@@ -438,6 +431,10 @@
                                     </div>
                                 </div>
                             </a>
+
+                            {#if content.margin}
+                                <div style="height: {content.margin}px;"></div>
+                            {/if}
                         {:else}
                             <div
                                 class="flex"
