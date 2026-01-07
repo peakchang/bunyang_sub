@@ -431,10 +431,6 @@
                                     </div>
                                 </div>
                             </a>
-
-                            {#if content.margin}
-                                <div style="height: {content.margin}px;"></div>
-                            {/if}
                         {:else}
                             <div
                                 class="flex"
@@ -456,6 +452,10 @@
                                     />
                                 </div>
                             </div>
+                        {/if}
+
+                        {#if content.margin}
+                            <div style="height: {content.margin}px;"></div>
                         {/if}
                     {/each}
                 {:else if content.formList && content.fixedBottom != "fixed"}
