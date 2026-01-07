@@ -58,7 +58,12 @@
     // 구, 신버전 공통 폼 입력 관련 변수
 
     onMount(async () => {
-        console.log(siteData);
+        if (
+            !siteData.ld_personal_info_view ||
+            siteData.ld_personal_info_view == "off"
+        ) {
+            $inviteChk == true;
+        }
 
         if (siteData.ld_json_main) {
             mainContents = JSON.parse(siteData.ld_json_main);
@@ -276,8 +281,6 @@
                 }
             }
             formVal["siteName"] = siteName;
-
-            console.log(formVal);
         }
 
         try {
@@ -308,7 +311,6 @@
     // 폼 만들어주기!! (폼을 만들어서 업데이트 시에 적용)
     function focusAct(e) {
         if (!isSameArrayKeys($getFormList, e.formList)) {
-            console.log(e);
 
             $formAgree = e.formAgree;
 

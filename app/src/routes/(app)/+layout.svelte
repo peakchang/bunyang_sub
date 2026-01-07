@@ -46,7 +46,6 @@
     let { data, children } = $props();
 
     let siteData = $derived(data.subView);
-    console.log(siteData);
 
     let mainPageMarginTop = $state(0);
     let screenWidth = $state(0);
@@ -59,8 +58,6 @@
 
     // 방문 기록은 공통으로 나오게 하기!!
     onMount(async () => {
-        console.log(siteData.ld_personal_info_view);
-
         if (
             !siteData.ld_personal_info_view ||
             siteData.ld_personal_info_view == "off"

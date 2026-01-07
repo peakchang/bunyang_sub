@@ -13,12 +13,8 @@
     let customerPhone = "";
 
     onMount(() => {
-        console.log("inner page mounted!!!");
-
-        console.log(siteData);
         if (siteData.ld_main_img) {
             mainImgList = siteData.ld_main_img.split(",");
-            console.log(mainImgList);
         }
     });
 </script>
