@@ -65,9 +65,8 @@
 
     // 컨텐츠 수정 함수
     function modifyContentFunc() {
+        console.log("컨텐츠 수정 들어오니?!");
 
-        console.log('컨텐츠 수정 들어오니?!');
-        
         /*
         업로드 되어 있는 컨텐츠 수정 함수!
         기본 정리!
@@ -409,6 +408,32 @@
     }
 
     function deleteFormAddgreeAddWord() {}
+
+    function contentSortUp() {
+        const index = parseInt(this.value);
+
+        if (index <= 0) {
+            alert("맨 위입니다");
+            return arr;
+        }
+
+        const newArr = [...sectionObj.contentList]; // 원본 보호
+        [newArr[index - 1], newArr[index]] = [newArr[index], newArr[index - 1]];
+        sectionObj.contentList = newArr;
+    }
+
+    function contentSortDown() {
+        const index = parseInt(this.value);
+
+        if (index >= sectionObj.contentList.length - 1) {
+            alert("맨 아래입니다");
+            return arr;
+        }
+
+        const newArr = [...sectionObj.contentList]; // 원본 보호
+        [newArr[index + 1], newArr[index]] = [newArr[index], newArr[index + 1]];
+        sectionObj.contentList = newArr;
+    }
 </script>
 
 <div class="mt-4">
@@ -488,8 +513,33 @@
                     {#if sectionObj.contentList.length != 0}
                         {#each sectionObj.contentList as content, idx}
                             {#if content["marginHeight"]}
-                                <div class="border border-gray-300 p-2">
-                                    <span>({idx + 1})</span>
+                                <div
+                                    class="border border-gray-300 p-2 flex items-center gap-1"
+                                >
+                                    <!-- svelte-ignore a11y_consider_explicit_label -->
+                                    <div
+                                        class="flex items-center gap-1 text-xl text-gray-500"
+                                    >
+                                        <button
+                                            value={idx}
+                                            onclick={contentSortUp}
+                                        >
+                                            <i
+                                                class="fa fa-arrow-circle-o-up"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                        <button
+                                            value={idx}
+                                            onclick={contentSortDown}
+                                        >
+                                            <i
+                                                class="fa fa-arrow-circle-o-down"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                    </div>
+                                    <span class="mr-2">({idx + 1})</span>
                                     <button
                                         class="btn btn-outline btn-info btn-sm mr-1"
                                         value={idx}
@@ -510,8 +560,33 @@
                                     여백 : {content.marginHeight} px
                                 </div>
                             {:else if content["text"]}
-                                <div class="border border-gray-300 p-2">
-                                    <span>({idx + 1})</span>
+                                <div
+                                    class="border border-gray-300 p-2 flex items-center gap-1"
+                                >
+                                    <!-- svelte-ignore a11y_consider_explicit_label -->
+                                    <div
+                                        class="flex items-center gap-1 text-xl text-gray-500"
+                                    >
+                                        <button
+                                            value={idx}
+                                            onclick={contentSortUp}
+                                        >
+                                            <i
+                                                class="fa fa-arrow-circle-o-up"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                        <button
+                                            value={idx}
+                                            onclick={contentSortDown}
+                                        >
+                                            <i
+                                                class="fa fa-arrow-circle-o-down"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                    </div>
+                                    <span class="mr-2">({idx + 1})</span>
                                     <button
                                         class="btn btn-outline btn-info btn-sm mr-1"
                                         value={idx}
@@ -537,8 +612,33 @@
                                     <span>딜레이 : {content.delay}</span>
                                 </div>
                             {:else if content["imgPath"]}
-                                <div class="border border-gray-300 p-2">
-                                    <span>({idx + 1})</span>
+                                <div
+                                    class="border border-gray-300 p-2 flex items-center gap-1"
+                                >
+                                    <!-- svelte-ignore a11y_consider_explicit_label -->
+                                    <div
+                                        class="flex items-center gap-1 text-xl text-gray-500"
+                                    >
+                                        <button
+                                            value={idx}
+                                            onclick={contentSortUp}
+                                        >
+                                            <i
+                                                class="fa fa-arrow-circle-o-up"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                        <button
+                                            value={idx}
+                                            onclick={contentSortDown}
+                                        >
+                                            <i
+                                                class="fa fa-arrow-circle-o-down"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                    </div>
+                                    <span class="mr-2">({idx + 1})</span>
                                     <button
                                         class="btn btn-outline btn-info btn-sm mr-1"
                                         value={idx}
@@ -573,8 +673,33 @@
                                     <span>딜레이 : {content.delay}</span> /
                                 </div>
                             {:else if content["imgList"]}
-                                <div class="border border-gray-300 p-2">
-                                    <span>({idx + 1})</span>
+                                <div
+                                    class="border border-gray-300 p-2 flex items-center gap-1"
+                                >
+                                    <!-- svelte-ignore a11y_consider_explicit_label -->
+                                    <div
+                                        class="flex items-center gap-1 text-xl text-gray-500"
+                                    >
+                                        <button
+                                            value={idx}
+                                            onclick={contentSortUp}
+                                        >
+                                            <i
+                                                class="fa fa-arrow-circle-o-up"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                        <button
+                                            value={idx}
+                                            onclick={contentSortDown}
+                                        >
+                                            <i
+                                                class="fa fa-arrow-circle-o-down"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                    </div>
+                                    <span class="mr-2">({idx + 1})</span>
                                     <button
                                         class="btn btn-outline btn-info btn-sm mr-1"
                                         value={idx}
@@ -595,8 +720,33 @@
                                     이미지 :여러개
                                 </div>
                             {:else if content["youtubeTag"]}
-                                <div class="border border-gray-300 p-2">
-                                    <span>({idx + 1})</span>
+                                <div
+                                    class="border border-gray-300 p-2 flex items-center gap-1"
+                                >
+                                    <!-- svelte-ignore a11y_consider_explicit_label -->
+                                    <div
+                                        class="flex items-center gap-1 text-xl text-gray-500"
+                                    >
+                                        <button
+                                            value={idx}
+                                            onclick={contentSortUp}
+                                        >
+                                            <i
+                                                class="fa fa-arrow-circle-o-up"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                        <button
+                                            value={idx}
+                                            onclick={contentSortDown}
+                                        >
+                                            <i
+                                                class="fa fa-arrow-circle-o-down"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                    </div>
+                                    <span class="mr-2">({idx + 1})</span>
                                     <button
                                         class="btn btn-outline btn-info btn-sm mr-1"
                                         value={idx}
@@ -621,8 +771,33 @@
                                     </div>
                                 </div>
                             {:else if content["formList"]}
-                                <div class="border border-gray-300 p-2">
-                                    <span>({idx + 1})</span>
+                                <div
+                                    class="border border-gray-300 p-2 flex items-center gap-1"
+                                >
+                                    <!-- svelte-ignore a11y_consider_explicit_label -->
+                                    <div
+                                        class="flex items-center gap-1 text-xl text-gray-500"
+                                    >
+                                        <button
+                                            value={idx}
+                                            onclick={contentSortUp}
+                                        >
+                                            <i
+                                                class="fa fa-arrow-circle-o-up"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                        <button
+                                            value={idx}
+                                            onclick={contentSortDown}
+                                        >
+                                            <i
+                                                class="fa fa-arrow-circle-o-down"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                    </div>
+                                    <span class="mr-2">({idx + 1})</span>
                                     <button
                                         class="btn btn-outline btn-info btn-sm mr-1"
                                         value={idx}
@@ -644,8 +819,33 @@
                                     <span>폼폼</span>
                                 </div>
                             {:else}
-                                <div class="border border-gray-300 p-2">
-                                    <span>({idx + 1})</span>
+                                <div
+                                    class="border border-gray-300 p-2 flex items-center gap-1"
+                                >
+                                    <!-- svelte-ignore a11y_consider_explicit_label -->
+                                    <div
+                                        class="flex items-center gap-1 text-xl text-gray-500"
+                                    >
+                                        <button
+                                            value={idx}
+                                            onclick={contentSortUp}
+                                        >
+                                            <i
+                                                class="fa fa-arrow-circle-o-up"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                        <button
+                                            value={idx}
+                                            onclick={contentSortDown}
+                                        >
+                                            <i
+                                                class="fa fa-arrow-circle-o-down"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </button>
+                                    </div>
+                                    <span class="mr-2">({idx + 1})</span>
                                     <button
                                         class="btn btn-outline btn-error btn-sm mr-3"
                                         value={idx}
