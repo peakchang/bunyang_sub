@@ -384,9 +384,9 @@
                         />
                     </div>
                 {:else}
-                    <div>
+                    <!-- <div>
                         <img src="/bottom-fix/left-phone.jpg" alt="" />
-                    </div>
+                    </div> -->
                 {/if}
             </a>
         {:else}
@@ -399,9 +399,9 @@
                         />
                     </div>
                 {:else}
-                    <div>
+                    <!-- <div>
                         <img src="/bottom-fix/left-phone.jpg" alt="" />
-                    </div>
+                    </div> -->
                 {/if}
             </a>
         {/if}
@@ -427,7 +427,7 @@
                     alt=""
                 />
             {:else}
-                <img src="/bottom-fix/right-form.jpg" alt="" />
+                <!-- <img src="/bottom-fix/right-form.jpg" alt="" /> -->
             {/if}
         </div>
     </div>

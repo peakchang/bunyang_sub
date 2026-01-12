@@ -62,8 +62,8 @@
             !siteData.ld_personal_info_view ||
             siteData.ld_personal_info_view == "off"
         ) {
-            console.log('꺼짐! 들어와? layout');
-            
+            console.log("꺼짐! 들어와? layout");
+
             $inviteChk = true;
         }
 
@@ -344,6 +344,7 @@
                             alt=""
                         />
                     {:else}
+                        asdfasdf
                         <!-- <div>
                             <img src="/bottom-fix/left-phone.jpg" alt="" />
                         </div> -->
