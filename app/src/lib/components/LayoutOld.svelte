@@ -86,7 +86,10 @@
         class="max-w-4xl w-full mx-auto p-3 pretendard"
         data-sveltekit-preload-data="tap"
     >
-        <div class="text-center flex justify-between items-center mb-3 gap-8">
+        <div
+            class="text-center flex justify-between items-center mb-3 gap-8"
+            data-sveltekit-reload
+        >
             {#if siteData.ld_logo}
                 <a href="/">
                     <img
@@ -112,6 +115,7 @@
 
         <ul
             class="flex justify-around items-center font-semibold text-base md:text-lg"
+            data-sveltekit-reload
         >
             {#each menuList as menu}
                 {#if menu.pgLink && menu.pgName}
