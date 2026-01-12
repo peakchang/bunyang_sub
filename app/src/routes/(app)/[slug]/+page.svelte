@@ -174,9 +174,7 @@
         {#if idx == 0}
             <div class="mb-5">
                 <img
-                    src={img.includes("http")
-                        ? img
-                        : `${back_api_origin}${img}`}
+                    src={setImg(img)}
                     alt=""
                     class="w-full"
                 />
@@ -184,9 +182,7 @@
         {:else}
             <div class="mb-5" data-aos={dataAosList[idx]}>
                 <img
-                    src={img.includes("http")
-                        ? img
-                        : `${back_api_origin}${img}`}
+                    src={setImg(img)}
                     alt=""
                     class="w-full"
                 />
