@@ -270,8 +270,10 @@ export function convertPrivacyTextToHtml(rawText) {
 export function setImg(imgUrl) {
 
     console.log(imgUrl);
-    
-    
+
+
+
+
     // 백그라운드 이미지가 없으면 바로 리턴
     if (!imgUrl) {
         return;
@@ -280,7 +282,13 @@ export function setImg(imgUrl) {
 
     // 포함 여부에 따라 순차적으로 처리
     if (imgUrl.includes("http")) {
-        setImgUrl = imgUrl;
+
+        const u = new URL(imgUrl);
+        if (u.hostname.startsWith('api.')) return url;
+        u.protocol = 'https:';
+        u.hostname = `api.${u.hostname}`;
+
+        setImgUrl = u.toString();
     } else if (imgUrl.includes("subimg")) {
         setImgUrl = `${back_api_origin}${imgUrl}`;
     } else {
@@ -309,14 +317,14 @@ export function checkFormRequired(list, typeName, word) {
 
 
 export function isSameArrayKeys(a, b) {
-        if (a.length !== b.length) return false;
+    if (a.length !== b.length) return false;
 
-        return a.every((obj, idx) => {
-            const keysA = Object.keys(obj).sort();
-            const keysB = Object.keys(b[idx]).sort();
-            return JSON.stringify(keysA) === JSON.stringify(keysB);
-        });
-    }
+    return a.every((obj, idx) => {
+        const keysA = Object.keys(obj).sort();
+        const keysB = Object.keys(b[idx]).sort();
+        return JSON.stringify(keysA) === JSON.stringify(keysB);
+    });
+}
 
 // export const goToBoardViewAddCount = async (data: any) => {
 //     try {
