@@ -6,6 +6,7 @@
     import { back_api, back_api_origin } from "$lib/const";
     import { browser } from "$app/environment";
     import { goto, invalidateAll } from "$app/navigation";
+    import { setImg } from "$lib/lib.js";
 
     let { siteData } = $props();
 
@@ -89,9 +90,7 @@
             {#if siteData.ld_logo}
                 <a href="/">
                     <img
-                        src={siteData["ld_logo"].includes("http")
-                            ? siteData["ld_logo"]
-                            : `${back_api_origin}${siteData["ld_logo"]}`}
+                        src={setImg(siteData["ld_logo"])}
                         alt=""
                         class="w-full max-w-72"
                     />
@@ -103,9 +102,7 @@
             {#if siteData.ld_ph_img && siteData.ld_phone_num}
                 <a href="/tel">
                     <img
-                        src={siteData["ld_ph_img"].includes("http")
-                            ? siteData["ld_ph_img"]
-                            : `${back_api_origin}${siteData["ld_ph_img"]}`}
+                        src={setImg(siteData["ld_ph_img"])}
                         alt=""
                         class="w-full max-w-72"
                     />

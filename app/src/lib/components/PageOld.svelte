@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import { back_api, back_api_origin } from "$lib/const";
+    import { setImg } from "$lib/lib.js";
 
     let { siteData } = $props();
 
@@ -22,15 +23,8 @@
 {#each mainImgList as mainImg, idx}
     {#if mainImg}
         <div class="mb-5">
-            {#if mainImg.includes("http")}
-                <img src={mainImg} alt="" class="w-full" />
-            {:else if mainImg.includes("subimg")}
-                <img
-                    src={`${back_api_origin}${mainImg}`}
-                    alt=""
-                    class="w-full"
-                />
-            {/if}
+
+            <img src={setImg(mainImg)} alt="" class="w-full" />
         </div>
     {/if}
 {/each}

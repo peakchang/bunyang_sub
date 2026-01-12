@@ -5,6 +5,7 @@
     import { validatePhoneNumber, convertPrivacyTextToHtml } from "$lib/lib";
     import axios from "axios";
     import { back_api, back_api_origin, consentInfo } from "$lib/const";
+    import { setImg } from "$lib/lib.js";
 
     let { siteData } = $props();
 
@@ -163,9 +164,7 @@
         <div class="md:w-1/2">
             <a href="/sms">
                 <img
-                    src={siteData["ld_event_img"].includes("http")
-                        ? siteData["ld_event_img"]
-                        : `${back_api_origin}${siteData["ld_event_img"]}`}
+                    src={setImg(siteData["ld_event_img"])}
                     alt=""
                 />
             </a>
@@ -380,11 +379,7 @@
                 {#if siteData.ld_mobile_bt_phone_img}
                     <div>
                         <img
-                            src={siteData["ld_mobile_bt_phone_img"].includes(
-                                "http",
-                            )
-                                ? siteData["ld_mobile_bt_phone_img"]
-                                : `${back_api_origin}${siteData["ld_mobile_bt_phone_img"]}`}
+                            src={setImg(siteData["ld_mobile_bt_phone_img"])}
                             alt=""
                         />
                     </div>
@@ -399,11 +394,7 @@
                 {#if siteData.ld_mobile_bt_phone_img}
                     <div>
                         <img
-                            src={siteData["ld_mobile_bt_phone_img"].includes(
-                                "http",
-                            )
-                                ? siteData["ld_mobile_bt_phone_img"]
-                                : `${back_api_origin}${siteData["ld_mobile_bt_phone_img"]}`}
+                            src={setImg(siteData["ld_mobile_bt_phone_img"])}
                             alt=""
                         />
                     </div>
@@ -432,9 +423,7 @@
         >
             {#if siteData.ld_mobile_bt_event_img}
                 <img
-                    src={siteData["ld_mobile_bt_event_img"].includes("http")
-                        ? siteData["ld_mobile_bt_event_img"]
-                        : `${back_api_origin}${siteData["ld_mobile_bt_event_img"]}`}
+                    src={setImg(siteData["ld_mobile_bt_event_img"])}
                     alt=""
                 />
             {:else}
