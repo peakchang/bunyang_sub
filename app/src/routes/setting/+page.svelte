@@ -9,6 +9,7 @@
     import { page } from "$app/stores";
     import { goto, invalidateAll } from "$app/navigation";
     import { onMount } from "svelte";
+    import { setImg } from "$lib/lib.js";
 
     let { data } = $props();
 
@@ -442,9 +443,7 @@
                             {#if allData["ld_logo"]}
                                 <div class="mb-3 border p-1 rounded-md">
                                     <img
-                                        src={allData["ld_logo"].includes("http")
-                                            ? allData["ld_logo"]
-                                            : `${back_api_origin}${allData["ld_logo"]}`}
+                                        src={setImg(allData["ld_logo"])}
                                         alt=""
                                     />
                                 </div>
@@ -482,11 +481,7 @@
                             {#if allData["ld_ph_img"]}
                                 <div class="mb-3 border p-1 rounded-md">
                                     <img
-                                        src={allData["ld_ph_img"].includes(
-                                            "http",
-                                        )
-                                            ? allData["ld_ph_img"]
-                                            : `${back_api_origin}${allData["ld_ph_img"]}`}
+                                        src={setImg(allData["ld_ph_img"])}
                                         alt=""
                                     />
                                 </div>
@@ -531,11 +526,9 @@
                             {#if allData["ld_mobile_bt_phone_img"]}
                                 <div class="mb-3 border p-1 rounded-md">
                                     <img
-                                        src={allData[
-                                            "ld_mobile_bt_phone_img"
-                                        ].includes("http")
-                                            ? allData["ld_mobile_bt_phone_img"]
-                                            : `${back_api_origin}${allData["ld_mobile_bt_phone_img"]}`}
+                                        src={setImg(
+                                            allData["ld_mobile_bt_phone_img"],
+                                        )}
                                         alt=""
                                     />
                                 </div>
@@ -578,11 +571,9 @@
                             {#if allData["ld_mobile_bt_event_img"]}
                                 <div class="mb-3 border p-1 rounded-md">
                                     <img
-                                        src={allData[
-                                            "ld_mobile_bt_event_img"
-                                        ].includes("http")
-                                            ? allData["ld_mobile_bt_event_img"]
-                                            : `${back_api_origin}${allData["ld_mobile_bt_event_img"]}`}
+                                        src={setImg(
+                                            allData["ld_mobile_bt_event_img"],
+                                        )}
                                         alt=""
                                     />
                                 </div>
@@ -629,12 +620,7 @@
         <div>
             {#if allData["ld_event_img"]}
                 <div class="mb-3 border p-1 rounded-md">
-                    <img
-                        src={allData["ld_event_img"].includes("http")
-                            ? allData["ld_event_img"]
-                            : `${back_api_origin}${allData["ld_event_img"]}`}
-                        alt=""
-                    />
+                    <img src={setImg(allData["ld_event_img"])} alt="" />
                 </div>
             {:else}
                 <div class="mb-3">이미지를 추가해주세요</div>
@@ -668,12 +654,7 @@
         <div class="text-sm font-semibold mb-3">※ 팝업 이미지</div>
         {#if allData["ld_popup_img"]}
             <div>
-                <img
-                    src={allData["ld_popup_img"].includes("http")
-                        ? allData["ld_popup_img"]
-                        : `${back_api_origin}${allData["ld_popup_img"]}`}
-                    alt=""
-                />
+                <img src={setImg(allData["ld_popup_img"])} alt="" />
             </div>
         {/if}
 
