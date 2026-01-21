@@ -1,7 +1,8 @@
 <script>
 	import "./layout.css";
-	import favicon from "$lib/assets/favicon.svg";
+
 	import Toast from "$lib/components/Toast.svelte";
+	import favicon from "$lib/assets/favicon.svg";
 
 	let { children } = $props();
 </script>
@@ -36,7 +37,7 @@
 		href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	/>
 
-	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 	<!-- Include stylesheet -->
 

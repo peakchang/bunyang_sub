@@ -586,6 +586,7 @@
                 {:else if content.marginHeight}
                     <div style="height: {content.marginHeight}px;"></div>
                 {:else if content.youtubeTag}
+                    {content.youtubeTag}
                     <div class="youtube-container mt-3 flex justify-center">
                         {@html content.youtubeTag}
                     </div>
