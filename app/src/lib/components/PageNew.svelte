@@ -36,6 +36,7 @@
 
     import moment from "moment-timezone";
     import axios from "axios";
+    import { afterNavigate } from "$app/navigation";
 
     let { siteData } = $props();
 
@@ -98,10 +99,13 @@
             );
 
             loading = false;
+            await tick();
+            await raf();
+            await setYoutubeRatio();
         }
 
         // setSectionHeight();
-        setYoutubeRatio();
+        // setYoutubeRatio();
 
         elementsToObserve = document.querySelectorAll(".observe-fade-up");
 
@@ -138,18 +142,55 @@
     $effect(() => {});
 
     // 유튜브 섹션의 높이 비율 맞추기
-    async function setYoutubeRatio() {
-        if (browser) {
-            await tick();
-            const youtubeContents =
-                document.querySelectorAll(".youtube-iframe");
+    // async function setYoutubeRatio() {
+    //     if (browser) {
+    //         await tick();
+    //         const youtubeContents =
+    //             document.querySelectorAll(".youtube-container");
 
-            for (let i = 0; i < youtubeContents.length; i++) {
-                youtubeContents[i].style.width = "90%";
-                const elementWidth = youtubeContents[i].offsetWidth;
-                youtubeContents[i].style.height = `${elementWidth / 1.7778}px`;
-            }
-        }
+    //         console.log(youtubeContents);
+
+    //         for (let i = 0; i < youtubeContents.length; i++) {
+    //             // youtubeContents[i].style.width = "90%";
+    //             const elementWidth = youtubeContents[i].offsetWidth;
+    //             console.log(elementWidth);
+
+    //             // youtubeContents[i].style.height = `${elementWidth / 1.7778}px`;
+    //         }
+
+    //         // for (let i = 0; i < youtubeContents.length; i++) {
+    //         //     youtubeContents[i].style.width = "90%";
+    //         //     const elementWidth = youtubeContents[i].offsetWidth;
+    //         //     console.log(elementWidth);
+
+    //         //     youtubeContents[i].style.height = `${elementWidth / 1.7778}px`;
+    //         // }
+
+    //         console.log(youtubeContents);
+    //     }
+    // }
+
+    const raf = () => new Promise((r) => requestAnimationFrame(r));
+
+    async function setYoutubeRatio() {
+        if (!browser) return;
+
+        await tick(); // Svelte DOM 업데이트 기다림
+        await raf(); // 브라우저 레이아웃/페인트 기다림
+
+        const containers = document.querySelectorAll(".youtube-container");
+        containers.forEach((box) => {
+            const w = box.getBoundingClientRect().width;
+            box.height = `${w / 1.7778}px`;
+            const youtubeIframe = box.querySelector("iframe");
+            youtubeIframe.style.width = "90%";
+            
+            youtubeIframe.style.height = `${w / 1.7778}px`;
+
+            console.log(youtubeIframe);
+
+            console.log("box width:", w);
+        });
     }
 
     function loadBackgroundImage(url) {
@@ -586,7 +627,9 @@
                 {:else if content.marginHeight}
                     <div style="height: {content.marginHeight}px;"></div>
                 {:else if content.youtubeTag}
-                    <div class="youtube-container mt-3 flex justify-center">
+                    <div
+                        class="youtube-container mt-3 flex justify-center w-full"
+                    >
                         {@html content.youtubeTag}
                     </div>
                 {/if}
@@ -790,5 +833,4 @@
             /* width: 50%; md:w-1/2 */
         }
     }
-
 </style>
