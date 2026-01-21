@@ -101,7 +101,7 @@
         }
 
         // setSectionHeight();
-        // setYoutubeRatio();
+        setYoutubeRatio();
 
         elementsToObserve = document.querySelectorAll(".observe-fade-up");
 
@@ -586,7 +586,6 @@
                 {:else if content.marginHeight}
                     <div style="height: {content.marginHeight}px;"></div>
                 {:else if content.youtubeTag}
-                    {content.youtubeTag}
                     <div class="youtube-container mt-3 flex justify-center">
                         {@html content.youtubeTag}
                     </div>
@@ -791,4 +790,5 @@
             /* width: 50%; md:w-1/2 */
         }
     }
+
 </style>
