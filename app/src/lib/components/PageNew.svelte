@@ -139,7 +139,11 @@
             .map((f) => ({ type: f.type, word: f.word, require: f.require }));
     });
 
-    $effect(() => {});
+    $effect(() => {
+        if (mainContents.length > 0) {
+            setYoutubeRatio();
+        }
+    });
 
     // 유튜브 섹션의 높이 비율 맞추기
     // async function setYoutubeRatio() {
@@ -172,24 +176,46 @@
 
     const raf = () => new Promise((r) => requestAnimationFrame(r));
 
+    // async function setYoutubeRatio() {
+    //     if (!browser) return;
+
+    //     await tick(); // Svelte DOM 업데이트 기다림
+    //     await raf(); // 브라우저 레이아웃/페인트 기다림
+
+    //     const containers = document.querySelectorAll(".youtube-container");
+    //     containers.forEach((box) => {
+    //         const w = box.getBoundingClientRect().width;
+    //         box.height = `${w / 1.7778}px`;
+    //         const youtubeIframe = box.querySelector("iframe");
+    //         youtubeIframe.style.width = "90%";
+
+    //         youtubeIframe.style.height = `${w / 1.7778}px`;
+
+    //         console.log(youtubeIframe);
+
+    //         console.log("box width:", w);
+    //     });
+    // }
+
     async function setYoutubeRatio() {
         if (!browser) return;
 
-        await tick(); // Svelte DOM 업데이트 기다림
-        await raf(); // 브라우저 레이아웃/페인트 기다림
+        await tick();
+        // 여전히 안 뜬다면 약간의 지연을 더 줍니다.
+        await new Promise((resolve) => setTimeout(resolve, 100));
 
         const containers = document.querySelectorAll(".youtube-container");
         containers.forEach((box) => {
             const w = box.getBoundingClientRect().width;
-            box.height = `${w / 1.7778}px`;
-            const youtubeIframe = box.querySelector("iframe");
-            youtubeIframe.style.width = "90%";
-            
-            youtubeIframe.style.height = `${w / 1.7778}px`;
-
-            console.log(youtubeIframe);
-
-            console.log("box width:", w);
+            if (w > 0) {
+                // 너비가 확보되었을 때만 계산
+                const youtubeIframe = box.querySelector("iframe");
+                if (youtubeIframe) {
+                    youtubeIframe.style.width = "100%"; // 90%보다는 부모 컨테이너를 꽉 채우는 게 관리하기 편합니다.
+                    youtubeIframe.style.height = `${w / 1.7778}px`;
+                    box.style.height = `${w / 1.7778}px`; // 컨테이너 높이도 명시적으로 지정
+                }
+            }
         });
     }
 
@@ -630,7 +656,9 @@
                     <div
                         class="youtube-container mt-3 flex justify-center w-full"
                     >
-                        {@html content.youtubeTag}
+                        <div class="video-wrapper w-[90%] mx-auto">
+                            {@html content.youtubeTag}
+                        </div>
                     </div>
                 {/if}
             {/each}
@@ -832,5 +860,17 @@
             margin-top: 0; /* md:mt-0 */
             /* width: 50%; md:w-1/2 */
         }
+    }
+
+    /* 유튜브 iframe이 wrapper 안에서 16:9를 유지하도록 함 */
+    .video-wrapper {
+        aspect-ratio: 16 / 9;
+        position: relative;
+        width: 90%; /* 원하는 너비 */
+    }
+
+    .video-wrapper :global(iframe) {
+        width: 100% !important;
+        height: 100% !important;
     }
 </style>
